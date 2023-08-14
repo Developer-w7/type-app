@@ -35,6 +35,23 @@ import Checkbox from '@mui/material/Checkbox';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { orange } from '@mui/material/colors';
 import { CssBaseline } from '@mui/material';
+import DashboardOld from './components/DashOld';
+
+
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
+import Products from './recoiltest/products';
+import Cart from './recoiltest/cart';
+
+import Orders from './recoiltest/orders';
+import DiscreteSlider from './recoiltest/slider';
+
+
 
 
 type DummyProps = {
@@ -127,41 +144,64 @@ const darkTheme = createTheme({
   },
 });
 
+// const App:FC<DummyProps>=({number})=> {
+//   return (
+// <Provider store={store}>
+// <ThemeProvider theme={theme}>
+// <CssBaseline />
+// <Routes>
+//  <Route path="/" element={<Layout />}>
+//  <Route path="/dash" element={<Dashboard />} />
+
+
+//  <Route path="/login" element={<Login />} />
+//  <Route path="/test" element={<About/>}/>
+
+//  <Route path="unauthorized" element={<Unauthorized />} />
+
+
+//  <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+//           <Route path="/ds2" element={<Dashboard/>} />
+//  </Route>
+
+
+//  {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+//           <Route path="/" element={<DashboardOld/>} />
+//  </Route> */}
+//  <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+//           <Route path="/" element={<Dashboard/>} />
+//  </Route>
+//  {/* <Route element={<About />}>
+//           <Route path="/" element={<Dashboard />} />
+//           <Route path="/tp" element={<Dashboard2 />} />
+//  </Route> */}
+//  <Route path="*" element={<Missing />} />
+//  </Route>
+// </Routes>
+// </ThemeProvider>
+// </Provider>
+
+//   );
+// }
+
+
 const App:FC<DummyProps>=({number})=> {
   return (
-<Provider store={store}>
-<ThemeProvider theme={theme}>
-<CssBaseline />
-<Routes>
- <Route path="/" element={<Layout />}>
- <Route path="/dash" element={<Dashboard />} />
+    <RecoilRoot>
+    <div style={{display:'flex',alignItems:'center',flexDirection:'column',textAlign:'center'}}>
+    
+    <p style={{marginBottom:50}}>Atoms</p>
 
-
- <Route path="/login" element={<Login />} />
- <Route path="/test" element={<About/>}/>
-
- <Route path="unauthorized" element={<Unauthorized />} />
-
-
- <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="/ds2" element={<Dashboard/>} />
- </Route>
-
-
- <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="/" element={<Dashboard/>} />
- </Route>
- {/* <Route element={<About />}>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/tp" element={<Dashboard2 />} />
- </Route> */}
- <Route path="*" element={<Missing />} />
- </Route>
-</Routes>
-</ThemeProvider>
-</Provider>
-
-  );
-}
-
+    <section style={{display:"grid",gridTemplateColumns:"4fr 3fr 1fr 1fr",gridTemplateRows:"1fr"}}>
+    <DiscreteSlider/>
+    <React.Suspense fallback={<div>Loading...</div>}>
+    <Products/>
+    </React.Suspense>
+    <Cart/>
+    <Orders/>
+    </section>
+   
+    </div>
+    </RecoilRoot>
+  )}
 export default App;

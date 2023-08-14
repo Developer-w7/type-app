@@ -64,12 +64,12 @@ export default function DashboardOld() {
 
   return (
     <div id="dash-page">
-      {/* <p>Dashboard</p>
+      <p>Dashboard</p>
       <button onClick={()=>checkValid()}>Check User</button>
       <button onClick={()=>logout()}>User Logout</button>
     
       <Link to="/ds2">home</Link>
-      <Link to="/">home</Link> */}
+      <Link to="/">home</Link>
 
 
       {/* Redux */}

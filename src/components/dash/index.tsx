@@ -97,9 +97,10 @@ export default function Dashboard() {
       <Grid container  spacing={2}>
 
 
-
+{Array(100).fill(2).map((v,i)=>
    
           <Grid
+          key={i}
             xs={12}
             sm={6}
             lg={3}
@@ -111,72 +112,8 @@ export default function Dashboard() {
               value="$24k"
             />
           </Grid>
-          <Grid
-            xs={12}
-            sm={6}
-            lg={3}
-          >
-            <OverviewBudget
-              difference={16}
-              positive={false}
-              sx={{ height: '100%' }}
-              value="1.6k"
-            />
-          </Grid>
-
-
-          <Grid
-            xs={12}
-            sm={6}
-            lg={3}
-          >
-            <OverviewBudget
-              difference={12}
-              positive
-              sx={{ height: '100%' }}
-              value="$24k"
-            />
-          </Grid>
-          <Grid
-            xs={12}
-            sm={6}
-            lg={3}
-          >
-            <OverviewBudget
-              difference={16}
-              positive={false}
-              sx={{ height: '100%' }}
-              value="1.6k"
-            />
-          </Grid>
-
-          <Grid
-            xs={12}
-            sm={6}
-            lg={3}
-          >
-            <OverviewBudget
-              difference={16}
-              positive={false}
-              sx={{ height: '100%' }}
-              value="1.6k"
-            />
-          </Grid>
-
-          <Grid
-            xs={12}
-            sm={6}
-            lg={3}
-          >
-            <OverviewBudget
-              difference={16}
-              positive={false}
-              sx={{ height: '100%' }}
-              value="1.6k"
-            />
-          </Grid>
-
-
+          
+          )}
 
 
 
