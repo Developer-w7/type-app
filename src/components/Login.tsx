@@ -86,12 +86,12 @@ const Login:FC = () => {
                 />
                 <button>Sign In</button>
             </form>
-            {/* <p>
+           <p>
                 Need an Account?<br />
                 <span className="line">
                     <Link to="/register">Sign Up</Link>
                 </span>
-            </p> */}
+            </p> 
         </section>
 
     )

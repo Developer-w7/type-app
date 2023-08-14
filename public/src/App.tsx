@@ -144,13 +144,15 @@ const App:FC<DummyProps>=({number})=> {
 
 
  <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="/ds2" element={<Dashboard/>} />
+          <Route path="/test" element={<Dashboard/>} />
  </Route>
 
 
  <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
           <Route path="/" element={<Dashboard/>} />
  </Route>
+
+
  {/* <Route element={<About />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/tp" element={<Dashboard2 />} />

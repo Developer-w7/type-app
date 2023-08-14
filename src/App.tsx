@@ -35,7 +35,25 @@ import Checkbox from '@mui/material/Checkbox';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { orange } from '@mui/material/colors';
 import { CssBaseline } from '@mui/material';
+import DashboardOld from './components/DashOld';
 
+
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
+import Products from './recoiltest/products';
+import Cart from './recoiltest/cart';
+
+import Orders from './recoiltest/orders';
+import DiscreteSlider from './recoiltest/slider';
+import Items from './recoiltest/Items';
+
+
+import Debounce from "./debounce";
 
 type DummyProps = {
   number: number
@@ -137,24 +155,27 @@ const App:FC<DummyProps>=({number})=> {
  <Route path="/dash" element={<Dashboard />} />
 
 
- <Route path="/login" element={<Login />} />
- <Route path="/test" element={<About/>}/>
+ {/* <Route path="/login" element={<Login />} /> */}
+ {/* <Route path="/test" element={<About/>}/> */}
 
- <Route path="unauthorized" element={<Unauthorized />} />
-
-
- <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="/ds2" element={<Dashboard/>} />
- </Route>
+ {/* <Route path="unauthorized" element={<Unauthorized />} /> */}
 
 
- <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="/" element={<Dashboard/>} />
- </Route>
- {/* <Route element={<About />}>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/tp" element={<Dashboard2 />} />
+ {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+          <Route path="/" element={<DashboardOld />} />
  </Route> */}
+
+ {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+          <Route path="/test" element={<DashboardOld />} />
+ </Route> */}
+
+ {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+          <Route path="/" element={<DashboardOld />} />
+ </Route> */}
+ {/* <Route element={<About />}>
+     <Route path="/" element={<Dashboard />} />
+     <Route path="/tp" element={<DashboardOld />} />
+     </Route> */}
  <Route path="*" element={<Missing />} />
  </Route>
 </Routes>
@@ -163,5 +184,57 @@ const App:FC<DummyProps>=({number})=> {
 
   );
 }
+// const data:any = ["Apple here", "Mango Here", "apple Farm", "ap farm"];
 
+// const App:FC<DummyProps>=({number})=> {
+
+//   const [fieldText, setFieldText] = React.useState("");
+//   const searchText = Debounce(fieldText, 1000);
+//   const [searchData, setSearchData] = React.useState([]);
+
+//   React.useEffect(() => {
+//     console.log(searchText);
+
+//     let filteredData:any = data.filter((v:any) => v.toLowerCase().includes(searchText));
+//     setSearchData(filteredData);
+//   }, [searchText]);
+
+//   React.useEffect(() => {
+//     setSearchData(data);
+//   }, []);
+
+//   return (
+//     <RecoilRoot>
+//     <div style={{display:'flex',alignItems:'center',flexDirection:'column',textAlign:'center'}}>
+    
+//     <p style={{marginBottom:50}}>Atoms</p>
+
+
+
+//     <input
+//           onChange={(v) => {
+//             setFieldText(v.target.value);
+//           }}
+//           value={fieldText}
+//           style={{
+//             width: "100%",
+//             borderRadius: 8,
+//             height: 20,
+//             padding: 20,
+//             fontSize: 30
+//           }}
+//           type="text"
+//           placeholder="search"
+//         />
+//         <button>Clear Search</button>
+      
+
+//       {searchData.map((v, i) => (
+//         <div key={i}>{v}</div>
+//       ))}
+
+
+//     </div>
+//     </RecoilRoot>
+//   )}
 export default App;
