@@ -3,34 +3,30 @@ import DiscreteSlider from "./slider"
 import { selectorFamily, useRecoilRefresher_UNSTABLE, useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
 // import { currentUpdateList, productCountState, productFetchQuery, productReloadQueryTwo, productState } from "../atoms/productAtom";
 import { useEffect } from "react";
+
 const userInfoQuery = selectorFamily({
-    key: 'UserInfoQuery',
+    key: 'UserInfoQuerytwo',
     get: limit => async () => {
-        console.log('called')
-        const response = await fetch(`https://fakestoreapi.com/products?limit=${limit}`)
-        .then(res=>res.json())
-        .then(json=>json)
-        .catch(e=>e)
-     
-  return response;
+    
+
+        await new Promise(resolve => setTimeout(resolve, 5000));
+      
+    //    throw new Error()
+  return [{
+    "id": Math.random(),
+    "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+    "price": 109.95,
+    "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+    "category": "men's clothing",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    "rating": {
+        "rate": 3.9,
+        "count": 120
+    }
+}];
     }
   })
-
-  const userInfoQueryTwo = selectorFamily({
-    key: 'UserInfoQueryTwo',
-    get: limit => async () => {
-        console.log('called')
-        const response = await fetch(`https://fakestoreapi.com/products/categories`)
-        .then(res=>res.json())
-        .then(json=>json)
-        .catch(e=>e)
-     
-  return response;
-    }
-  })
-
-  
-const Products = () => {
+const Items = () => {
     // const productText = useRecoilValue(productCountState);
     // const products = useRecoilValue(productState);
     // const [productss,productUpdates] = useRecoilState(productFetchQuery);
@@ -92,4 +88,4 @@ refreshUserInfo();
     )
 }
 
-export default Products
+export default Items
