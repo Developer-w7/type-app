@@ -152,18 +152,18 @@ const App:FC<DummyProps>=({number})=> {
 <CssBaseline />
 <Routes>
  <Route path="/" element={<Layout />}>
- {/* <Route path="/dash" element={<Dashboard />} /> */}
+ <Route path="/dash" element={<Dashboard />} />
 
 
- <Route path="/login" element={<Login />} />
+ {/* <Route path="/login" element={<Login />} /> */}
  {/* <Route path="/test" element={<About/>}/> */}
 
- <Route path="unauthorized" element={<Unauthorized />} />
+ {/* <Route path="unauthorized" element={<Unauthorized />} /> */}
 
 
- <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+ {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
           <Route path="/" element={<DashboardOld />} />
- </Route>
+ </Route> */}
 
  {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
           <Route path="/test" element={<DashboardOld />} />
@@ -172,12 +172,10 @@ const App:FC<DummyProps>=({number})=> {
  {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
           <Route path="/" element={<DashboardOld />} />
  </Route> */}
-
-
  {/* <Route element={<About />}>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/tp" element={<DashboardOld />} />
- </Route> */}
+     <Route path="/" element={<Dashboard />} />
+     <Route path="/tp" element={<DashboardOld />} />
+     </Route> */}
  <Route path="*" element={<Missing />} />
  </Route>
 </Routes>
