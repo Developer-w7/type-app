@@ -1,0 +1,27 @@
+import { useRef, useState, useEffect, FC } from 'react';
+import useAuth from '../../hooks/useAuth';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+
+import axios from '../../api/axios';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import { useDispatch, useSelector } from 'react-redux';
+
+import './chess.css';
+import { Box, Container } from '@mui/material';
+import BoardModel from '../../models/BoardModel';
+import Board from './Board';
+
+
+export default function Dashboard() {
+// const board = new BoardModel();
+const [board] = useState(new BoardModel())
+
+  return (
+    
+<div>
+    
+    <Board board={board} playingAsWhite/>
+</div>
+   
+  );
+}
