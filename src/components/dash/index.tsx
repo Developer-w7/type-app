@@ -78,9 +78,8 @@ export default function Dashboard() {
   }}
 
   >
-    <SubMenu label="Charts">
-      <MenuItem> Pie charts </MenuItem>
-      <MenuItem> Line charts </MenuItem>
+    <SubMenu label="Chess App">
+      <MenuItem> New Game </MenuItem>
     </SubMenu>
     <MenuItem> Documentation </MenuItem>
     <MenuItem> Calendar </MenuItem>

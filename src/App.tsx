@@ -23,7 +23,7 @@ import AuthContext from './context/AuthProvider';
 import Layout from './Layout';
 import Missing from './Missing';
 import Login from './components/Login';
-import Dashboard from './components/dash';
+import Dashboard from './components/chess';
 import RequireAuth from './components/RequireAuth';
 import Unauthorized from './components/Unauthorized';
 import { Link } from "react-router-dom";
@@ -152,30 +152,7 @@ const App:FC<DummyProps>=({number})=> {
 <CssBaseline />
 <Routes>
  <Route path="/" element={<Layout />}>
- <Route path="/dash" element={<Dashboard />} />
-
-
- {/* <Route path="/login" element={<Login />} /> */}
- {/* <Route path="/test" element={<About/>}/> */}
-
- {/* <Route path="unauthorized" element={<Unauthorized />} /> */}
-
-
- {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="/" element={<DashboardOld />} />
- </Route> */}
-
- {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="/test" element={<DashboardOld />} />
- </Route> */}
-
- {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="/" element={<DashboardOld />} />
- </Route> */}
- {/* <Route element={<About />}>
-     <Route path="/" element={<Dashboard />} />
-     <Route path="/tp" element={<DashboardOld />} />
-     </Route> */}
+ <Route path="/" element={<Dashboard />} />
  <Route path="*" element={<Missing />} />
  </Route>
 </Routes>
@@ -184,57 +161,5 @@ const App:FC<DummyProps>=({number})=> {
 
   );
 }
-// const data:any = ["Apple here", "Mango Here", "apple Farm", "ap farm"];
 
-// const App:FC<DummyProps>=({number})=> {
-
-//   const [fieldText, setFieldText] = React.useState("");
-//   const searchText = Debounce(fieldText, 1000);
-//   const [searchData, setSearchData] = React.useState([]);
-
-//   React.useEffect(() => {
-//     console.log(searchText);
-
-//     let filteredData:any = data.filter((v:any) => v.toLowerCase().includes(searchText));
-//     setSearchData(filteredData);
-//   }, [searchText]);
-
-//   React.useEffect(() => {
-//     setSearchData(data);
-//   }, []);
-
-//   return (
-//     <RecoilRoot>
-//     <div style={{display:'flex',alignItems:'center',flexDirection:'column',textAlign:'center'}}>
-    
-//     <p style={{marginBottom:50}}>Atoms</p>
-
-
-
-//     <input
-//           onChange={(v) => {
-//             setFieldText(v.target.value);
-//           }}
-//           value={fieldText}
-//           style={{
-//             width: "100%",
-//             borderRadius: 8,
-//             height: 20,
-//             padding: 20,
-//             fontSize: 30
-//           }}
-//           type="text"
-//           placeholder="search"
-//         />
-//         <button>Clear Search</button>
-      
-
-//       {searchData.map((v, i) => (
-//         <div key={i}>{v}</div>
-//       ))}
-
-
-//     </div>
-//     </RecoilRoot>
-//   )}
 export default App;
