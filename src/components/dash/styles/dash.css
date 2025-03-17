@@ -1,0 +1,49 @@
+.dash-main{
+display: flex;
+}
+p{
+    color:blue
+}
+
+.top-bar{
+    display: flex;
+    padding: 0 30px;
+    align-items:center;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+
+}
+.admin-panel{
+    display: flex;
+    height: 100vh;
+}
+.panel{
+display: block;
+width:20%;
+}
+.container-right{
+    display: block;
+    width:80%;  
+    background-color: #eeeeee89;
+    margin: 5px;
+    padding: 5px;
+}
+p{
+    margin:0;
+}
+.panel span{
+   display: flex;
+   padding: 10px 10px;
+   background-color: rgba(158, 89, 188, 0.48);
+   opacity: .9;
+   margin: 5px;
+   cursor: pointer;
+}
+
+.panel span:hover{
+
+    background-color: rgba(158, 89, 188, 0.702);
+    opacity: 1;
+    font-weight: bold;
+
+ }

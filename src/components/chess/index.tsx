@@ -10,17 +10,22 @@ import './chess.css';
 import { Box, Container } from '@mui/material';
 import BoardModel from '../../models/BoardModel';
 import Board from './Board';
+import { PlayerColor } from '../../models/PlayerModel';
 
 
 export default function Dashboard() {
 // const board = new BoardModel();
 const [board] = useState(new BoardModel())
+const [playerTurn, setPlayerTurn] = useState<PlayerColor>(PlayerColor.WHITE);
 
   return (
     
 <div>
     
-    <Board board={board} playingAsWhite/>
+    <Board board={board} 
+      playingAsWhite
+      playerTurn={playerTurn}
+      />
 </div>
    
   );

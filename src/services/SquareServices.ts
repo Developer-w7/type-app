@@ -13,10 +13,18 @@ const columnNotation:Record<number, string> = {
 
 }
 
-export const getSquareCoordinates = (square: SquareModel):string =>{
-    return ` ${columnNotation[square.column]}${square.row + 1}`;
+export const getSquareColumnCoordinates = (square: SquareModel):string =>{
+    // return ` ${columnNotation[square.column]}${square.row + 1}`;
+    return ` ${columnNotation[square.coordinates.column]}`;
 }
 
+
+export const getSquareRowCoordinates = (square: SquareModel):string =>{
+    // return ` ${columnNotation[square.column]}${square.row + 1}`;
+    return ` ${square.coordinates.row + 1}`;
+}
+
+
 export const isLightSquare = (square: SquareModel):boolean =>{
-    return (square.column + square.row ) % 2 === 0;
+    return (square.coordinates.column + square.coordinates.row ) % 2 === 0;
 }
