@@ -23,7 +23,7 @@ import AuthContext from './context/AuthProvider';
 import Layout from './Layout';
 import Missing from './Missing';
 import Login from './components/Login';
-import Dashboard from './components/chess';
+// import Dashboard from './components/chess';
 import RequireAuth from './components/RequireAuth';
 import Unauthorized from './components/Unauthorized';
 import { Link } from "react-router-dom";
@@ -54,6 +54,9 @@ import Items from './recoiltest/Items';
 
 
 import Debounce from "./debounce";
+
+// import Dashboard from './components/chess';
+import Dashboard from './components/dash';
 
 type DummyProps = {
   number: number
