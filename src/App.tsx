@@ -57,6 +57,8 @@ import Debounce from "./debounce";
 
 // import Dashboard from './components/chess';
 import Dashboard from './components/dash';
+import AccessControl from './components/dash/admin/AccessControl';
+import ManageUser from './components/dash/admin/ManageUser';
 
 type DummyProps = {
   number: number
@@ -155,7 +157,11 @@ const App:FC<DummyProps>=({number})=> {
 <CssBaseline />
 <Routes>
  <Route path="/" element={<Layout />}>
- <Route path="/" element={<Dashboard />} />
+ <Route path="/" element={<Dashboard />} >
+    <Route path="manage_user"  element={<ManageUser />} />
+    <Route path="access_control" element={<AccessControl />} />
+    <Route path="cockpit_control" element={<AccessControl />} />
+ </Route>
  <Route path="*" element={<Missing />} />
  </Route>
 </Routes>
