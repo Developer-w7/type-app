@@ -3,7 +3,7 @@ import useAuth from '../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import axios from '../api/axios';
-const LOGIN_URL = '/login';
+const LOGIN_URL = '/user/login';
 
 const Login:FC = () => {
     const { setAuth }:any = useAuth();
@@ -15,8 +15,8 @@ const Login:FC = () => {
     const userRef:any = useRef();
     const errRef:any = useRef();
 
-    const [user, setUser] = useState('');
-    const [pwd, setPwd] = useState('');
+    const [user, setUser] = useState('leopoldo.price@hotmail.com');
+    const [pwd, setPwd] = useState('123');
     const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const Login:FC = () => {
 
         try {
             const response = await axios.post(LOGIN_URL,
-                JSON.stringify({ user:user, pwd:pwd }),
+                JSON.stringify({ email:user, password:pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -40,7 +40,7 @@ const Login:FC = () => {
             );
             console.log(JSON.stringify(response?.data));
             const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
+            const roles = response?.data?.user.roles;
             setAuth({ user, pwd, roles, accessToken });
             setUser('');
             setPwd('');
