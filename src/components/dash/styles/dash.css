@@ -15,7 +15,9 @@ p{
 }
 .admin-panel{
     display: flex;
-    height: 100vh;
+
+    flex-direction: row;
+    /* height: 100vh; */
 }
 .panel{
 display: block;
@@ -25,8 +27,41 @@ width:20%;
     display: block;
     width:80%;  
     background-color: #eeeeee89;
+
+}
+
+.inner-container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
     margin: 5px;
-    padding: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    height: 100vh;
+    
+    /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+}
+.inner-container table{
+    overflow-x: scroll;
+    display: block;
+    width: 100%;
+    border:1px solid #bebebe;
+
+}
+
+.inner-container table td{
+    width: 200px
+}
+.top-crumb{
+    display: flex;
+    padding: 10px;
+    margin: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.m-0{
+    margin: 0;
 }
 p{
     margin:0;

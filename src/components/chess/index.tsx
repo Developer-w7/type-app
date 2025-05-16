@@ -13,7 +13,7 @@ import Board from './Board';
 import { PlayerColor } from '../../models/PlayerModel';
 
 
-export default function Dashboard() {
+export default function ChessDashboard() {
 // const board = new BoardModel();
 const [board] = useState(new BoardModel())
 const [playerTurn, setPlayerTurn] = useState<PlayerColor>(PlayerColor.WHITE);

@@ -42,9 +42,9 @@ export default function AdminPanel() {
   
     >Dashboard</Link></span>
     <span><NavLink 
-    to="/manage_user">Manage User</NavLink></span>
-    <span><NavLink to="/access_control">Access Control</NavLink></span>
-    <span><NavLink to="/cockpit_control">Cockpit Control</NavLink></span>
+    to="manage_user">Manage User</NavLink></span>
+    <span><NavLink to="access_control">Access Control</NavLink></span>
+    <span><NavLink to="/chess">Chess</NavLink></span>
     <span>Staff Listing</span>
     <span>Staff Allowance</span>
     <span>PDF Tracker</span>

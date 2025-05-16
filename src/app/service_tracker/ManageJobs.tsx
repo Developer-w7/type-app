@@ -2,79 +2,81 @@ import { useRef, useState, useEffect, FC } from 'react';
 import Clock from 'react-live-clock';
 import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 
-import useAuth from '../../../hooks/useAuth';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import axios from '../../../api/axios';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
-import useLogout from '../../../hooks/useLogout';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../store/store';
-import '../styles/dash.css';
 
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import '../../components/dash/styles/dash.css';
+import { RootState } from '../../store/store';
 
 const LOGIN_URL = '/auth1';
 const LOGOUT_URL = '/logout';
 
 
-export default function ManageUser() {
+export default function ManageJob() {
   const axiosPrivate = useAxiosPrivate();
-  const logout = useLogout();
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
   let data = useLocation();
     //TData
 type User = {
-  name: string
-  age: number
-  visits: number
-  progress: number
-  status: string
+  title: string
+  createdAt: string
+  description: string
+  employee_id: string
+  location: string
+  country: string
+  date: Date
 }
 const fallbackData:User[]=[]
 
 const columns = [
   {
-    header: 'Name',
-    accessorKey: 'name',
+    header: 'title',
+    accessorKey: 'title',
     size: 250,
 
   },
   {
-    header: 'Email',
-    accessorKey: 'email',
+    header: 'employee_id',
+    accessorKey: 'employee_id',
     minWidth: 50,
     maxWidth: 50,
   },
   {
-    header: 'Password',
-    accessorKey: 'password',
+    header: 'location',
+    accessorKey: 'location',
     minWidth: 50,
     maxWidth: 50,
   },
   {
-    header: 'Role',
-    accessorKey: 'role',
+    header: 'country',
+    accessorKey: 'country',
     minWidth: 50,
     maxWidth: 50,
   },
 
   {
-    header: 'Created At',
+    header: 'date',
+    accessorKey: 'date',
+    minWidth: 500,
+    maxWidth: 500,
+  },
+
+  {
+    header: 'createdAt',
     accessorKey: 'createdAt',
     minWidth: 500,
     maxWidth: 500,
   },
   {
-    header: 'Token Created At',
-    accessorKey: 'createdAt',
-    minWidth: 50,
-    maxWidth: 50,
-  },
-  {
-    header: 'Account Status',
-    accessorKey: 'status',
-    minWidth: 50,
-    maxWidth: 50,
+    header: 'description',
+    accessorKey: 'description',
+    minWidth: 500,
+    maxWidth: 500,
   }
 ]
 
@@ -99,42 +101,25 @@ const columns = [
   useEffect(() =>{
 
 
-    fetch('http://localhost:5000/users?page=1&limit=5').then(response =>response.json()).then((data:any)=>{
-      
+    fetch('http://localhost:5000/jobs?page=1&limit=5').then(response =>response.json()).then((data:any)=>{
+      console.log(data)
       let list:any =[];
-      data.usersList.map((item:any) => {
+      data.jobsList.map((item:any) => {
         
    list.push({
-    "name": item.name,
-    "email": item.email,
-    "password": item.password,
-    "createdAt": item.createdAt,
-    "role": item.role,
-    "age": 33,
-    "visits": 100,
-    "progress": 50,
-    "status": "Active"
+          title: item.title,
+          createdAt: item.createdAt,
+          employee_id: item.employee_id,
+          location: item.location,
+          country: item.country.label,
+          date: item.date,
+          description: item.description
    })
 
       })
 
       setUserData([...list]);
-      // setUserData([
-      //   {
-      //     "name": "Tanner1",
-      //     "age": 33,
-      //     "visits": 100,
-      //     "progress": 50,
-      //     "status": "Married"
-      //   },
-      //   {
-      //     "name": "Kevin2",
-      //     "age": 27,
-      //     "visits": 200,
-      //     "progress": 100,
-      //     "status": "Single"
-      //   }
-      // ])
+   
     })
     
     },[])
