@@ -23,7 +23,7 @@ import AuthContext from './context/AuthProvider';
 import Layout from './Layout';
 import Missing from './Missing';
 import Login from './components/Login';
-import Dashboard from './components/dash';
+// import Dashboard from './components/chess';
 import RequireAuth from './components/RequireAuth';
 import Unauthorized from './components/Unauthorized';
 import { Link } from "react-router-dom";
@@ -35,6 +35,36 @@ import Checkbox from '@mui/material/Checkbox';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { orange } from '@mui/material/colors';
 import { CssBaseline } from '@mui/material';
+import DashboardOld from './components/DashOld';
+
+
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
+import Products from './recoiltest/products';
+import Cart from './recoiltest/cart';
+
+import Orders from './recoiltest/orders';
+import DiscreteSlider from './recoiltest/slider';
+import Items from './recoiltest/Items';
+
+
+import Debounce from "./debounce";
+
+// import Dashboard from './components/chess';
+import Dashboard from './components/dash';
+import AccessControl from './components/dash/admin/AccessControl';
+import ManageUser from './components/dash/admin/ManageUser';
+import ChessDashboard from './components/chess';
+import FrontPage from './app/frontpage/home';
+import ServiceDash from './app/service_tracker/dash';
+import AddNewJob from './app/service_tracker/addJob';
+import ManageJob from './app/service_tracker/ManageJobs';
+import Counter from './components/Tests/Counter';
 
 
 type DummyProps = {
@@ -45,7 +75,9 @@ type DummyProps = {
 const ROLES = {
   'User': 2001,
   'Editor': 1984,
-  'Admin': 5150
+  'Admin': 5150,
+  'Basic':'basic',
+  'Chess':'chess'
 }
 
 function About() 
@@ -127,34 +159,38 @@ const darkTheme = createTheme({
   },
 });
 
+type Props = {
+  initialCount: number
+}
+
 const App:FC<DummyProps>=({number})=> {
+
+  const count:number = 20;
   return (
 <Provider store={store}>
 <ThemeProvider theme={theme}>
 <CssBaseline />
 <Routes>
  <Route path="/" element={<Layout />}>
- <Route path="/dash" element={<Dashboard />} />
-
-
- <Route path="/login" element={<Login />} />
- <Route path="/test" element={<About/>}/>
-
- <Route path="unauthorized" element={<Unauthorized />} />
-
-
- <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="/ds2" element={<Dashboard/>} />
+ <Route path="test" element={<Counter initialCount={count} />}></Route>
+ <Route path="login" element={<Login />} />
+ <Route path="register" element={<Login />} />
+ <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
+  <Route path="/service" element={<ServiceDash/>}>
+  <Route path="add"  element={<AddNewJob />} />
+  <Route path="manage_job"  element={<ManageJob />} />
+  </Route>
  </Route>
-
-
- <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="/" element={<Dashboard/>} />
+ <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
+  <Route path="/" element={<FrontPage/>} />
  </Route>
- {/* <Route element={<About />}>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/tp" element={<Dashboard2 />} />
- </Route> */}
+ <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
+  <Route path="/chess" element={<ChessDashboard />} />
+ </Route>
+ <Route path="/admin" element={<Dashboard />} >
+   <Route path="manage_user"  element={<ManageUser />} />
+   <Route path="access_control" element={<AccessControl />} />
+ </Route>
  <Route path="*" element={<Missing />} />
  </Route>
 </Routes>

@@ -1,0 +1,31 @@
+.prod-details{
+
+
+}
+.prod-img{
+    width: 100px;
+    height: 100px;
+}
+.prod-details-wrapper,.cart-details-wrapper,.prod-panel-wrapper{
+    display: flex;
+    border:2px solid black
+
+}
+.cart-details-wrapper{
+    flex-direction: column;
+    overflow: hidden;
+}
+.cart-item-wrapper{
+    display: flex;
+    overflow: scroll;
+
+   
+}
+.cart-item{
+    display: flex;
+}
+.flex-h{
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 10px;
+}
