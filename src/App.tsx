@@ -65,6 +65,7 @@ import ManageJob from "./app/service_tracker/ManageJobs";
 import Counter from "./components/Tests/Counter";
 import PersonalSpotHome from "./pages/PersonalSpot/Home";
 import PersonalSpotProfile from "./pages/PersonalSpot/Profile";
+import PersonalSpotLayout from "./pages/PersonalSpot/layout";
 
 type DummyProps = {
   number: number;
@@ -168,7 +169,8 @@ const App: FC<DummyProps> = ({ number }) => {
         <CssBaseline />
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/ps" element={<PersonalSpotHome />}>
+            <Route path="/ps" element={<PersonalSpotLayout />}>
+              <Route path="home" element={<PersonalSpotHome />} />
               <Route path="profile" element={<PersonalSpotProfile />} />
             </Route>
             <Route
