@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-function TextAreaField() {
+function PasswordField() {
   const passwordHintId = useId();
   return (
     <>
@@ -14,4 +14,4 @@ function TextAreaField() {
     </>
   );
 }
-export default TextAreaField;
+export default PasswordField;
