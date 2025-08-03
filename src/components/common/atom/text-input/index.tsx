@@ -73,7 +73,7 @@ function TextField({
   return (
     <>
       <label>
-        {label}
+        <span>{label}</span>
         <input
           onChange={(event) =>
             onChange && onChange((event.target as HTMLInputElement).value)
