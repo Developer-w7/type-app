@@ -56,33 +56,35 @@ export default function PersonalSpotProfile() {
       experience: "5 years of experience in web development",
     });
   }, []);
+  const onChangeHandler = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    console.log("Change event:", event.target.value);
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log(event);
-    // try {
-    //   const response = await axiosPrivate.post(
-    //     "http://127.0.0.1:5000/add_job",
+    console.log(event.target);
+    try {
+      const response = await axiosPrivate.post(
+        "http://127.0.0.1:5000/add_profile",
 
-    //     JSON.stringify({
-    //       title: data.title,
-    //       description: data.description,
-    //       location: data.location,
-    //       date: data.date,
-    //       employee_id: data.employee.value,
-    //       MyCheckbox: data.MyCheckbox,
-    //       country: data.country,
-    //     }),
-    //     {
-    //       headers: { "Content-Type": "application/json" },
-    //       withCredentials: true,
-    //     }
-    //   );
-    //   console.log(JSON.stringify(response?.data));
-    // } catch (err: any) {
-    //   console.log(err);
-    // }
+        JSON.stringify(formData),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      console.log(JSON.stringify(response?.data));
+    } catch (err: any) {
+      console.log(err);
+    }
 
     console.log("Form submitted");
   };
@@ -148,7 +150,7 @@ export default function PersonalSpotProfile() {
           value={formData.name}
           label="Name"
           type="text"
-          onChange={(v) => console.log(v)}
+          onChange={(event) => onChangeHandler(event)}
           // onBlur={(e) => console.log("Blur event:", e.target.value)}
           // onFocus={(e) => console.log("Focus event:", e.target.value)}
           placeholder="Enter your username"
@@ -163,14 +165,14 @@ export default function PersonalSpotProfile() {
           className="text-input"
           style={{ border: "1px solid #ccc", padding: "8px" }}
           id="profile-username-input"
-          name="profileUsername"
+          name="name"
         />
         <TextField
           defaultValue=""
           value={formData.phoneNumber}
           label="Phone Number"
           type="number"
-          onChange={(v) => console.log(v)}
+          onChange={(event) => onChangeHandler(event)}
           // onBlur={(e) => console.log("Blur event:", e.target.value)}
           // onFocus={(e) => console.log("Focus event:", e.target.value)}
           // placeholder="Enter your username"
@@ -185,14 +187,14 @@ export default function PersonalSpotProfile() {
           className="text-input"
           style={{ border: "1px solid #ccc", padding: "8px" }}
           id="profile-username-input"
-          name="profileUsername"
+          name="phoneNumber"
         />
         <TextField
           defaultValue=""
           value={formData.email}
           label="Email"
           type="email"
-          onChange={(v) => console.log(v)}
+          onChange={(event) => onChangeHandler(event)}
           // onBlur={(e) => console.log("Blur event:", e.target.value)}
           // onFocus={(e) => console.log("Focus event:", e.target.value)}
           // placeholder="Enter your username"
@@ -207,13 +209,13 @@ export default function PersonalSpotProfile() {
           className="text-input"
           style={{ border: "1px solid #ccc", padding: "8px" }}
           id="profile-username-input"
-          name="profileUsername"
+          name="email"
         />
         <TextAreaField
           defaultValue=""
           value={formData.aboutYou}
           label="About You"
-          onChange={(v) => console.log(v)}
+          onChange={(event) => onChangeHandler(event)}
           // placeholder="Tell us about yourself"
           required={false}
           autoFocus={false}
@@ -225,14 +227,14 @@ export default function PersonalSpotProfile() {
           className="text-area-input"
           style={{ border: "1px solid #ccc", padding: "8px", width: "100%" }}
           id="profile-bio-input"
-          name="profileBio"
+          name="aboutYou"
         />
         <TextField
           defaultValue=""
           value={formData.education}
           label="Education"
           type="text"
-          onChange={(v) => console.log(v)}
+          onChange={(event) => onChangeHandler(event)}
           // onBlur={(e) => console.log("Blur event:", e.target.value)}
           // onFocus={(e) => console.log("Focus event:", e.target.value)}
           // placeholder="Enter your username"
@@ -247,14 +249,14 @@ export default function PersonalSpotProfile() {
           className="text-input"
           style={{ border: "1px solid #ccc", padding: "8px" }}
           id="profile-username-input"
-          name="profileUsername"
+          name="education"
         />
         <TextField
           defaultValue=""
           value={formData.address}
           label="Address"
           type="text"
-          onChange={(v) => console.log(v)}
+          onChange={(event) => onChangeHandler(event)}
           // onBlur={(e) => console.log("Blur event:", e.target.value)}
           // onFocus={(e) => console.log("Focus event:", e.target.value)}
           // placeholder="Enter your username"
@@ -269,14 +271,14 @@ export default function PersonalSpotProfile() {
           className="text-input"
           style={{ border: "1px solid #ccc", padding: "8px" }}
           id="profile-username-input"
-          name="profileUsername"
+          name="address"
         />
         <TextField
           defaultValue=""
           value={formData.skills}
           label="Skills"
           type="text"
-          onChange={(v) => console.log(v)}
+          onChange={(event) => onChangeHandler(event)}
           // onBlur={(e) => console.log("Blur event:", e.target.value)}
           // onFocus={(e) => console.log("Focus event:", e.target.value)}
           // placeholder="Enter your username"
@@ -291,14 +293,14 @@ export default function PersonalSpotProfile() {
           className="text-input"
           style={{ border: "1px solid #ccc", padding: "8px" }}
           id="profile-username-input"
-          name="profileUsername"
+          name="skills"
         />
         <TextField
           defaultValue=""
           value={formData.experience}
           label="Experience"
           type="text"
-          onChange={(v) => console.log(v)}
+          onChange={(event) => onChangeHandler(event)}
           // onBlur={(e) => console.log("Blur event:", e.target.value)}
           // onFocus={(e) => console.log("Focus event:", e.target.value)}
           // placeholder="Enter your username"
@@ -313,7 +315,7 @@ export default function PersonalSpotProfile() {
           className="text-input"
           style={{ border: "1px solid #ccc", padding: "8px" }}
           id="profile-username-input"
-          name="profileUsername"
+          name="experience"
         />
         {/* Add more fields as necessary */}
         <button type="submit" className="submit-button">

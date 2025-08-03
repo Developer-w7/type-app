@@ -32,7 +32,7 @@ function TextAreaField({
   label?: string;
   type?: string;
   defaultValue?: string;
-  onChange?: (value: string) => void;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   value?: string;
   placeholder?: string;
   disabled?: boolean;
@@ -78,7 +78,8 @@ function TextAreaField({
           cols={cols}
           aria-label={label}
           onChange={(event) =>
-            onChange && onChange((event.target as HTMLTextAreaElement).value)
+            onChange &&
+            onChange(event as React.ChangeEvent<HTMLTextAreaElement>)
           }
           onClick={(event) =>
             onClick && onClick(event as React.MouseEvent<HTMLTextAreaElement>)

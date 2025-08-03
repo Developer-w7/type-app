@@ -33,7 +33,7 @@ function TextField({
   label?: string;
   type?: string;
   defaultValue?: string;
-  onChange?: (value: string) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
   placeholder?: string;
   disabled?: boolean;
@@ -76,7 +76,7 @@ function TextField({
         <span>{label}</span>
         <input
           onChange={(event) =>
-            onChange && onChange((event.target as HTMLInputElement).value)
+            onChange && onChange(event as React.ChangeEvent<HTMLInputElement>)
           }
           onClick={(event) =>
             onClick && onClick(event as React.MouseEvent<HTMLInputElement>)
