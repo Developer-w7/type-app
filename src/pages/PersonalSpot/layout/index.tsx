@@ -8,7 +8,8 @@ export default function PersonalSpotLayout() {
     <div>
       <NavLink to="home">Home</NavLink>
       ||<NavLink to="profile">Profile</NavLink>||
-      <NavLink to="profile">Resume</NavLink>||
+      <NavLink to="resume">Resume</NavLink>||
+      <NavLink to="resume_editor">Resume Editor</NavLink>||
       <NavLink to="profile">Settings</NavLink>
       <Outlet />
     </div>

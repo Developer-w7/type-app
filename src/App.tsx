@@ -66,6 +66,8 @@ import Counter from "./components/Tests/Counter";
 import PersonalSpotHome from "./pages/PersonalSpot/Home";
 import PersonalSpotProfile from "./pages/PersonalSpot/Profile";
 import PersonalSpotLayout from "./pages/PersonalSpot/layout";
+import PersonalSpotResumeManager from "./pages/PersonalSpot/resume-upload/Resume";
+import PersonalSpotResumeEditor from "./pages/PersonalSpot/resume-editor/ResumeEditor";
 
 type DummyProps = {
   number: number;
@@ -172,6 +174,11 @@ const App: FC<DummyProps> = ({ number }) => {
             <Route path="/ps" element={<PersonalSpotLayout />}>
               <Route path="home" element={<PersonalSpotHome />} />
               <Route path="profile" element={<PersonalSpotProfile />} />
+              <Route path="resume" element={<PersonalSpotResumeManager />} />
+              <Route
+                path="resume_editor"
+                element={<PersonalSpotResumeEditor />}
+              />
             </Route>
             <Route
               path="test"
