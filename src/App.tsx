@@ -66,8 +66,9 @@ import Counter from "./components/Tests/Counter";
 import PersonalSpotHome from "./pages/PersonalSpot/Home";
 import PersonalSpotProfile from "./pages/PersonalSpot/Profile";
 import PersonalSpotLayout from "./pages/PersonalSpot/layout";
-import PersonalSpotResumeManager from "./pages/PersonalSpot/resume-upload/Resume";
+import PersonalSpotResumeManager from "./pages/PersonalSpot/resume-upload/ResumeUploader";
 import PersonalSpotResumeEditor from "./pages/PersonalSpot/resume-editor/ResumeEditor";
+import ThemeOption from "./components/PersonalSpot/elements/theme-option/ThemeOption";
 
 type DummyProps = {
   number: number;
@@ -168,43 +169,49 @@ const App: FC<DummyProps> = ({ number }) => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/ps" element={<PersonalSpotLayout />}>
-              <Route path="home" element={<PersonalSpotHome />} />
-              <Route path="profile" element={<PersonalSpotProfile />} />
-              <Route path="resume" element={<PersonalSpotResumeManager />} />
-              <Route
-                path="resume_editor"
-                element={<PersonalSpotResumeEditor />}
-              />
-            </Route>
-            <Route
-              path="test"
-              element={<Counter initialCount={count} />}
-            ></Route>
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Login />} />
-            <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
-              <Route path="/service" element={<ServiceDash />}>
-                <Route path="add" element={<AddNewJob />} />
-                <Route path="manage_job" element={<ManageJob />} />
+        {" "}
+        {/* MUI/STYLED/THEMING */}
+        <ThemeOption themeName="light">
+          {" "}
+          {/* CUSTOME/THEMING */}
+          <CssBaseline />
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route path="/ps" element={<PersonalSpotLayout />}>
+                <Route path="home" element={<PersonalSpotHome />} />
+                <Route path="profile" element={<PersonalSpotProfile />} />
+                <Route path="resume" element={<PersonalSpotResumeManager />} />
+                <Route
+                  path="resume_editor"
+                  element={<PersonalSpotResumeEditor />}
+                />
               </Route>
+              <Route
+                path="test"
+                element={<Counter initialCount={count} />}
+              ></Route>
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Login />} />
+              <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
+                <Route path="/service" element={<ServiceDash />}>
+                  <Route path="add" element={<AddNewJob />} />
+                  <Route path="manage_job" element={<ManageJob />} />
+                </Route>
+              </Route>
+              <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
+                <Route path="/" element={<FrontPage />} />
+              </Route>
+              <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
+                <Route path="/chess" element={<ChessDashboard />} />
+              </Route>
+              <Route path="/admin" element={<Dashboard />}>
+                <Route path="manage_user" element={<ManageUser />} />
+                <Route path="access_control" element={<AccessControl />} />
+              </Route>
+              <Route path="*" element={<Missing />} />
             </Route>
-            <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
-              <Route path="/" element={<FrontPage />} />
-            </Route>
-            <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
-              <Route path="/chess" element={<ChessDashboard />} />
-            </Route>
-            <Route path="/admin" element={<Dashboard />}>
-              <Route path="manage_user" element={<ManageUser />} />
-              <Route path="access_control" element={<AccessControl />} />
-            </Route>
-            <Route path="*" element={<Missing />} />
-          </Route>
-        </Routes>
+          </Routes>
+        </ThemeOption>
       </ThemeProvider>
     </Provider>
   );

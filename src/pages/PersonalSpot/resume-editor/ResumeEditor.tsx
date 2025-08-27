@@ -195,10 +195,6 @@ export default function PersonalSpotResumeEditor() {
           label="Email"
           type="email"
           onChange={(event) => onChangeHandler(event)}
-          // onBlur={(e) => console.log("Blur event:", e.target.value)}
-          // onFocus={(e) => console.log("Focus event:", e.target.value)}
-          // placeholder="Enter your username"
-          // required
           autoFocus={false}
           autoComplete="username"
           maxLength={20}
@@ -216,7 +212,6 @@ export default function PersonalSpotResumeEditor() {
           value={formData.aboutYou}
           label="About You"
           onChange={(event) => onChangeHandler(event)}
-          // placeholder="Tell us about yourself"
           required={false}
           autoFocus={false}
           maxLength={200}
@@ -235,10 +230,6 @@ export default function PersonalSpotResumeEditor() {
           label="Education"
           type="text"
           onChange={(event) => onChangeHandler(event)}
-          // onBlur={(e) => console.log("Blur event:", e.target.value)}
-          // onFocus={(e) => console.log("Focus event:", e.target.value)}
-          // placeholder="Enter your username"
-          // required
           autoFocus={false}
           autoComplete="username"
           maxLength={20}
@@ -257,10 +248,6 @@ export default function PersonalSpotResumeEditor() {
           label="Address"
           type="text"
           onChange={(event) => onChangeHandler(event)}
-          // onBlur={(e) => console.log("Blur event:", e.target.value)}
-          // onFocus={(e) => console.log("Focus event:", e.target.value)}
-          // placeholder="Enter your username"
-          // required
           autoFocus={false}
           autoComplete="username"
           maxLength={20}
@@ -279,10 +266,6 @@ export default function PersonalSpotResumeEditor() {
           label="Skills"
           type="text"
           onChange={(event) => onChangeHandler(event)}
-          // onBlur={(e) => console.log("Blur event:", e.target.value)}
-          // onFocus={(e) => console.log("Focus event:", e.target.value)}
-          // placeholder="Enter your username"
-          // required
           autoFocus={false}
           autoComplete="username"
           maxLength={20}
@@ -301,10 +284,6 @@ export default function PersonalSpotResumeEditor() {
           label="Experience"
           type="text"
           onChange={(event) => onChangeHandler(event)}
-          // onBlur={(e) => console.log("Blur event:", e.target.value)}
-          // onFocus={(e) => console.log("Focus event:", e.target.value)}
-          // placeholder="Enter your username"
-          // required
           autoFocus={false}
           autoComplete="username"
           maxLength={20}
@@ -319,10 +298,10 @@ export default function PersonalSpotResumeEditor() {
         />
         {/* Add more fields as necessary */}
         <button type="submit" className="submit-button">
-          Save Profile
+          Generate Resume
         </button>
         <button type="reset" className="reset-button">
-          Reset Profile
+          Cancel
         </button>
         {/* Add more buttons or actions as necessary */}
       </form>
