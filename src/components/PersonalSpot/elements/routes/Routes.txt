@@ -69,9 +69,6 @@ import PersonalSpotLayout from "./pages/PersonalSpot/layout";
 import PersonalSpotResumeManager from "./pages/PersonalSpot/resume-upload/ResumeUploader";
 import PersonalSpotResumeEditor from "./pages/PersonalSpot/resume-editor/ResumeEditor";
 import ThemeOption from "./components/PersonalSpot/elements/theme-option/ThemeOption";
-import Router from "./routes/";
-import { ErrorBoundary } from "react-error-boundary";
-import ErrorBoundaryWrapper from "./components/common/elements/error-boundary/ErrorBoundary";
 
 type DummyProps = {
   number: number;
@@ -168,21 +165,55 @@ type Props = {
 };
 
 const App: FC<DummyProps> = ({ number }) => {
+  const count: number = 20;
   return (
-    <ErrorBoundaryWrapper>
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        {" "}
+        {/* MUI/STYLED/THEMING */}
+        <ThemeOption themeName="light">
           {" "}
-          {/* MUI/STYLED/THEMING */}
-          <ThemeOption themeName="light">
-            {" "}
-            {/* CUSTOM/THEMING */}
-            <CssBaseline />
-            <Router />
-          </ThemeOption>
-        </ThemeProvider>
-      </Provider>
-    </ErrorBoundaryWrapper>
+          {/* CUSTOME/THEMING */}
+          <CssBaseline />
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route path="/ps" element={<PersonalSpotLayout />}>
+                <Route path="home" element={<PersonalSpotHome />} />
+                <Route path="profile" element={<PersonalSpotProfile />} />
+                <Route path="resume" element={<PersonalSpotResumeManager />} />
+                <Route
+                  path="resume_editor"
+                  element={<PersonalSpotResumeEditor />}
+                />
+              </Route>
+              <Route
+                path="test"
+                element={<Counter initialCount={count} />}
+              ></Route>
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Login />} />
+              <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
+                <Route path="/service" element={<ServiceDash />}>
+                  <Route path="add" element={<AddNewJob />} />
+                  <Route path="manage_job" element={<ManageJob />} />
+                </Route>
+              </Route>
+              <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
+                <Route path="/" element={<FrontPage />} />
+              </Route>
+              <Route element={<RequireAuth allowedRoles={[ROLES.Chess]} />}>
+                <Route path="/chess" element={<ChessDashboard />} />
+              </Route>
+              <Route path="/admin" element={<Dashboard />}>
+                <Route path="manage_user" element={<ManageUser />} />
+                <Route path="access_control" element={<AccessControl />} />
+              </Route>
+              <Route path="*" element={<Missing />} />
+            </Route>
+          </Routes>
+        </ThemeOption>
+      </ThemeProvider>
+    </Provider>
   );
 };
 
