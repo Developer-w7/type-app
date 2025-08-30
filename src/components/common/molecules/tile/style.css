@@ -1,0 +1,91 @@
+.tile-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+}
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+.tile-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.tile i {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.tile span {
+  font-size: 16px;
+  text-align: center;
+}
+.tile:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+.tile-wrapper:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.tile-wrapper:active {
+  box-shadow: none;
+  transform: scale(0.98);
+}
+.tile-wrapper:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.6);
+}
+.tile-wrapper:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.6);
+}
+.tile-wrapper:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+.tile-wrapper:active .tile {
+  transform: scale(0.95);
+  transition: transform 0.1s ease-in-out;
+}
+.tile-wrapper:focus .tile {
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.6);
+  transition: box-shadow 0.2s ease-in-out;
+}
+.tile-wrapper:focus-visible .tile {
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.6);
+  transition: box-shadow 0.2s ease-in-out;
+}
+.tile-wrapper:focus:not(:focus-visible) .tile {
+  box-shadow: none;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.tile-wrapper:active .tile-inner {
+  transform: scale(0.95);
+  transition: transform 0.1s ease-in-out;
+}
+.tile-wrapper:focus .tile-inner {
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.6);
+  transition: box-shadow 0.2s ease-in-out;
+}
+.tile-wrapper:focus-visible .tile-inner {
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.6);
+  transition: box-shadow 0.2s ease-in-out;
+}
+.tile-wrapper:focus:not(:focus-visible) .tile-inner {
+  box-shadow: none;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.tile-wrapper {
+  width: 200px; /* Default width */
+  height: 200px; /* Default height */
+}
